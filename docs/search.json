@@ -1,0 +1,86 @@
+[
+  {
+    "objectID": "seminar01.html#seats",
+    "href": "seminar01.html#seats",
+    "title": "Seminar 01",
+    "section": "SEAtS",
+    "text": "SEAtS"
+  },
+  {
+    "objectID": "seminar01.html#outline-of-today",
+    "href": "seminar01.html#outline-of-today",
+    "title": "Seminar 01",
+    "section": "Outline of today",
+    "text": "Outline of today\n\nIce breaker\nOrientation\n\n[short break]\n\nUpcoming\nDiscussion\n\n\n\nNotes go here"
+  },
+  {
+    "objectID": "seminar01.html#age-guessing",
+    "href": "seminar01.html#age-guessing",
+    "title": "Seminar 01",
+    "section": "Age Guessing",
+    "text": "Age Guessing\n\n\n\n\n\n\nSmall group task\n\n\n30 min\n\n\n\n\nIntroduce yourself to your group.\nTen cards (numbered 1 through 10) display a photo of a person unknown to you. These cards will be passed around from group to group.\nFor each card:\n\nEstimate the age of the person in the photo in whole years; your group must come up with a single estimate.\nRecord your estimate in the attached table.\n\nPlease select one person to report your group’s estimates."
+  },
+  {
+    "objectID": "seminar01.html#the-big-reveal",
+    "href": "seminar01.html#the-big-reveal",
+    "title": "Seminar 01",
+    "section": "The big reveal",
+    "text": "The big reveal"
+  },
+  {
+    "objectID": "seminar01.html#your-estimates",
+    "href": "seminar01.html#your-estimates",
+    "title": "Seminar 01",
+    "section": "Your estimates",
+    "text": "Your estimates\n#| standalone: true\n#| viewerHeight: 500\n\nlibrary(shiny)\nlibrary(shinyMatrix)\nlibrary(bslib)\nlibrary(tibble)\nlibrary(tidyr)\nlibrary(readr)\nlibrary(dplyr, warn.conflicts = FALSE)\nlibrary(ggplot2)\n\n# Define UI for random distribution app ----\n# Sidebar layout with input and output definitions ----\n\nm &lt;- matrix(rep(NA, 60), 6, 10, dimnames = list(c(LETTERS[1:6]), sprintf(\"%s\", seq(1:10))))\n\nui &lt;- page_sidebar(\n  sidebar = sidebar(\n    title = \"Estimated age (est_age) for each card by group\",\n    matrixInput(\"mat\",\n                value = m,\n                inputClass = \"numeric\",\n                rows = list(names = TRUE, extend = FALSE), \n                cols = list(names = TRUE, extend = FALSE)),\n    fill = TRUE,\n    fillable = TRUE,\n    width = 600\n  ),\n  fillable = TRUE,\n  fillable_mobile = TRUE,\n  # Main panel for displaying outputs ----\n  # Output: A tabset that combines three panels ----\n  navset_card_underline(\n    nav_panel(\"Data\", tableOutput(\"data\")),\n    nav_panel(\"Variation\", tableOutput(\"variation\")),\n    nav_panel(\"Bias\", plotOutput(\"bias\"))\n  )\n)\n\n\n# Define server logic ----\nserver &lt;- function(input, output, session) {\n  rv &lt;- reactiveValues(truthmat = t(matrix(rep(c(36L, 57L,  8L, 87L, 60L, 34L, 56L, 28L, 39L, 72L), 6), 10, 6, dimnames = list(sprintf(\"%s\", seq(1:10)), c(LETTERS[1:6])))))\n  \n  dat &lt;- reactive({\n    tibble(group = factor(rep(LETTERS[1:6],10)), \n           card = factor(sort(rep(1:10, 6))),\n           est_age = c(as.integer(input$mat)),\n           true_age = c(rv$truthmat),\n           error = c(as.integer(input$mat) - rv$truthmat))\n  })\n  \n  output$data &lt;- renderTable({\n    dat() |&gt; as.data.frame()\n  }, rownames = FALSE, colnames = TRUE)\n  \n  output$variation &lt;- renderTable({\n    dat() |&gt; \n      group_by(.data$group) |&gt;\n      summarise(mean_abs_err = mean(abs(.data$error))) |&gt;\n      as.data.frame()\n  }, rownames = FALSE, colnames = TRUE)\n  \n  output$bias &lt;- renderPlot({\n    dat() |&gt;\n      ggplot() + \n      geom_boxplot(aes(y = .data$error, x = .data$card)) + \n      labs(title = \"Bias in age estimates (error &lt; 0 then 'look younger', error &gt; 0 then 'look older')\",\n           y = \"Error (est_age - true_age)\",\n           x = \"Person (card)\") +\n      theme_classic(base_size = 18)\n  })\n}\n\n# Create Shiny app ----\nshinyApp(ui, server)"
+  },
+  {
+    "objectID": "seminar01.html#a-week-in-ma22004",
+    "href": "seminar01.html#a-week-in-ma22004",
+    "title": "Seminar 01",
+    "section": "A week in MA22004",
+    "text": "A week in MA22004"
+  },
+  {
+    "objectID": "seminar01.html#review-of-resources",
+    "href": "seminar01.html#review-of-resources",
+    "title": "Seminar 01",
+    "section": "Review of resources",
+    "text": "Review of resources\n\nMyDundee\nModule notes: both pdf and html\nPerusall: peer learning\nGradescope: submitting labs\nLibrary: books!\nLab resources: git repository"
+  },
+  {
+    "objectID": "seminar01.html#preparing-for-labs",
+    "href": "seminar01.html#preparing-for-labs",
+    "title": "Seminar 01",
+    "section": "Preparing for labs",
+    "text": "Preparing for labs\n\n\n\nR \nRStudio\nMA22004labs package\n\n dundeemath/MA22004\n dundeemath/MA22004labs"
+  },
+  {
+    "objectID": "seminar01.html#data-collection-analysis-workshop",
+    "href": "seminar01.html#data-collection-analysis-workshop",
+    "title": "Seminar 01",
+    "section": "Data Collection & Analysis Workshop",
+    "text": "Data Collection & Analysis Workshop\nFriday 2024-09-20 at University of Dundee Botanic Garden.\nI will be there from 14:00-17:00,     or"
+  },
+  {
+    "objectID": "seminar01.html#rescheduling-class-changes",
+    "href": "seminar01.html#rescheduling-class-changes",
+    "title": "Seminar 01",
+    "section": "Rescheduling: Class changes",
+    "text": "Rescheduling: Class changes\n\nSeminar next week Wed 2024-09-25 covered by KM\nWorkshop next week Thu 2024-09-26 cancelled\n\nreschedule extra workshop for revision closer to exam?"
+  },
+  {
+    "objectID": "seminar01.html#this-semester-will-be-stressful",
+    "href": "seminar01.html#this-semester-will-be-stressful",
+    "title": "Seminar 01",
+    "section": "This semester will be stressful",
+    "text": "This semester will be stressful\n\n\n\n\n\n\nSmall group task\n\n\n15 min\n\n\n\n\nForm small groups of 3-6 people.\nBrainstorm suggestions on ways to make the module less stressful. E.g.,\n\nno more class tests …  \nno COVID examples …  \n\nShare your top ideas to the Mentimeter poll [code: 2517 9269]."
+  },
+  {
+    "objectID": "seminar01.html#suggestions-to-implement",
+    "href": "seminar01.html#suggestions-to-implement",
+    "title": "Seminar 01",
+    "section": "Suggestions to implement?",
+    "text": "Suggestions to implement?"
+  }
+]
