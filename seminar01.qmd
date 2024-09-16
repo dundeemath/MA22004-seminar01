@@ -202,11 +202,17 @@ shinyApp(ui, server)
 # Upcoming &nbsp;`r fa("ruler")` {.mySegue .center}
 
 
-## Data Collection & Analysis Workshop
+## Field Trip 
 
-Friday 2024-09-20 at University of Dundee Botanic Garden. 
+**Friday 2024-09-20** at University of Dundee Botanic Garden. 
 
 I will be there from 14:00-17:00, &nbsp;`r fa("cloud-rain")`&nbsp; or &nbsp;`r fa("sun")`
+
+- Activity will start at 14:30 and end at 16:30!
+- Must bring **Student ID card**.
+- You will be separated into groups at the start. 
+
+## Data Collection & Analysis
 
 ![](images/botanics.png){fig-alt="Petal width, petal length, aperture of cyclamen."}
 
@@ -252,7 +258,7 @@ I will be there from 14:00-17:00, &nbsp;`r fa("cloud-rain")`&nbsp; or &nbsp;`r f
    - Field trip this Friday  ---  Botanics &nbsp;`r fa("map-location-dot")`
 
 :::{.callout-tip}
-## Notes from today will be posted to 
+## Today's slides will be posted to 
 
 <https://dundeemath.github.io/MA22004-seminar01>
 :::
