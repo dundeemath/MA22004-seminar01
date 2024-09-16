@@ -102,8 +102,8 @@ b, strong {
 
 .title-page .logo {
   position: absolute; 
-  top: -80px; 
-  right: -80px;
+  top: -60px; 
+  right: -20px;
 }
 
 .callout strong {
@@ -115,9 +115,9 @@ b, strong {
   font-weight: bold;
   text-align: center;
   padding: 0px 0px;
-  background: $bl-color-3;
+  background: $bg-color;
   color: $hl-color-3;
-  background-color: $bl-color-3;
+  background-color: $bg-color;
   data-background: none;
 }
 
