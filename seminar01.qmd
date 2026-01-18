@@ -3,7 +3,6 @@ title: "Seminar 01"
 subtitle: "MA22004 / MA52008"
 date: "2026-01-19"
 author: "Dr John McDermott // jzmcdermott@dundee.ac.uk"
-format: revealjs
 ---
 
 ```{r}

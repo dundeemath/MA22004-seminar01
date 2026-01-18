@@ -10,6 +10,7 @@ project:
 
 format: 
   revealjs:
+    embed-resources: false
     chalkboard: true
     html-math-method: katex
     theme: [default, resources/custom.scss]
