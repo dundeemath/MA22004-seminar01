@@ -166,7 +166,7 @@ shinyApp(ui, server)
 # Orientation &nbsp;`r fa("compass")` {.mySegue .center}
 
 
-## A week in MA22004
+## A week in MA22004 / MA52008
 
 ## Review of resources 
 
@@ -200,7 +200,7 @@ shinyApp(ui, server)
 :::
 
 ::: {.column width="60%"}
-![](images/labs.png){fig-alt="Screenshot of MA22004 lab 1."}
+![](images/labs.png){fig-alt="Screenshot of MA22004 / MA52008 lab 1."}
 :::
 
 ::::
